@@ -91,6 +91,7 @@ setup_args = dict(
         'pycryptodomex>=3.9.7',
         'tornado>=5.1',
         'traitlets>=4.3.3',
+        'yarn-api-client>=1.0.3',
     ],
     extras_require={
         "kerberos": ['requests_kerberos'],
@@ -105,10 +106,6 @@ setup_args = dict(
     entry_points={
         'jupyter_client.kernel_provisioners': [
             'yarn-provisioner = remote_provisioners.yarn:YarnProvisioner',
-            'distributed-provisioner = remote_provisioners.distributed:DistributedProvisioner',
-            'kubernetes-provisioner = remote_provisioners.k8s:KubernetesProvisioner',
-            'docker-provisioner = remote_provisioners.docker_swarm:DockerProvisioner',
-            'docker_swarm-provisioner = remote_provisioners.docker_swarm:DockerSwarmProvisioner',
         ]
     },
     python_requires=">=3.6",
