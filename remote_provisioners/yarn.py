@@ -87,10 +87,12 @@ class YarnProvisioner(RemoteProvisionerBase):
             if self.alt_yarn_endpoint:
                 endpoints.append(self.alt_yarn_endpoint)
 
-        auth = None
         if self.yarn_endpoint_security_enabled:
             from requests_kerberos import HTTPKerberosAuth
             auth = HTTPKerberosAuth()
+        else:
+            from yarn_api_client.auth import SimpleAuth
+            auth = SimpleAuth(username='hadoop')
 
         self.resource_mgr = ResourceManager(service_endpoints=endpoints, auth=auth, verify=cert_path)
 

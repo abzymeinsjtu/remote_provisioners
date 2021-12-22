@@ -91,6 +91,7 @@ setup_args = dict(
         'pycryptodomex>=3.9.7',
         'tornado>=5.1',
         'traitlets>=4.3.3',
+        'yarn-api-client>=1.0.3',
     ],
     extras_require={
         "kerberos": ['requests_kerberos'],
