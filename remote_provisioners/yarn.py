@@ -92,7 +92,7 @@ class YarnProvisioner(RemoteProvisionerBase):
             auth = HTTPKerberosAuth()
         else:
             from yarn_api_client.auth import SimpleAuth
-            auth = SimpleAuth(username='hadoop')
+            auth = SimpleAuth(username=self.kernel_username)
 
         self.resource_mgr = ResourceManager(service_endpoints=endpoints, auth=auth, verify=cert_path)
 
