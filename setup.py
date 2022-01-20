@@ -42,6 +42,7 @@ class bdist_egg_disabled(bdist_egg):
     Prevents setup.py install from performing setuptools' default easy_install,
     which it should never ever do.
     """
+
     def run(self):
         sys.exit("Aborting implicit building of eggs. Use `pip install .` to install from source.")
 
@@ -91,11 +92,13 @@ setup_args = dict(
         'pycryptodomex>=3.9.7',
         'tornado>=5.1',
         'traitlets>=4.3.3',
-        'yarn-api-client>=1.0.3',
     ],
     extras_require={
         "kerberos": ['requests_kerberos'],
-        "yarn": ['requests', 'yarn-api-client'],
+        "yarn": [
+            'requests',
+            'yarn-api-client @ git+ssh://git@gitlab.alibaba-inc.com:soe/hadoop-yarn-api-python-client.git@emrstudio-v1.0.4'
+        ],
         "k8s": ['kubernetes>=4.0.0', 'jinja2>=2.10'],
         "docker": ['docker>=3.5.0'],
     },
@@ -115,7 +118,6 @@ setup_args = dict(
     },
     include_package_data=True,
 )
-
 
 if __name__ == '__main__':
     setup(**setup_args)
